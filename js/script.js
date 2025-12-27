@@ -17,10 +17,11 @@ function getRandomNumber() {
 }
 // console.log('numero aleatorio:', getRandomNumber())
 
-function startGame() {
+function startGame() { 
+  // comprobación para que el número siempre sea entero
   const userValue = parseInt(userInput.value);
 
-  if (isNaN(userValue) || userValue < 1 || userValue > 3) {
+  if ( isNaN(userValue) || userValue < 1 || userValue > 3 ) {
     alert("Introduce un número entre 1 y 3");
     return;
   }
@@ -36,7 +37,7 @@ function startGame() {
       clearInterval(timer); // detener contador
       checkResult(userValue); // compara los números
     }
-    
+
     timeLeft--;
   }, 1000);
 }
@@ -46,9 +47,9 @@ function checkResult(userValue) {
   const bombNumber = getRandomNumber();
 
   if (userValue === bombNumber) {
-    resultDisplay.innerHTML = `<span style="color: green;">¡HAS GANADO! Salvaste el mundo. El número era ${bombNumber}.</span>`;
+    resultDisplay.innerHTML = `<span style="color: green;">👑 ¡HAS GANADO! Salvaste el mundo. El número era ${bombNumber} 👑</span>`;
   } else {
-    resultDisplay.innerHTML = `<span style="color: red;">¡BOOOOM! Has perdido. La bomba era el número ${bombNumber}.</span>`;
+    resultDisplay.innerHTML = `<span style="color: red;">😭 ¡BOOOOM! Has perdido. La bomba era el número ${bombNumber} 😭</span>`;
   }
 }
 
@@ -56,12 +57,13 @@ userInput.addEventListener("change", () => {
   startGame();
 });
 
-restartBtn.addEventListener('click', () => {
-    userInput.value = '';
-    userInput.disabled = false;
-    countdownDisplay.innerHTML = '';
-    resultDisplay.innerHTML = '';
-})
+// reiniciamos las constantes del juego
+restartBtn.addEventListener("click", () => {
+  userInput.value = "";
+  userInput.disabled = false;
+  countdownDisplay.innerHTML = "";
+  resultDisplay.innerHTML = "";
+});
 
 /* function countDown() {
   const userValue = Number(userInputElement.value);
